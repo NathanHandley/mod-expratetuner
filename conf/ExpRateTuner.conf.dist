@@ -1,0 +1,19 @@
+[worldserver]
+
+###############################################################################
+#    This module scales the kill experience each character receives by a
+#    per-character percentage (0-100). Quest, exploration, and battleground
+#    experience are not affected.
+#
+#    ExpRateTuner.Enabled
+#        Setting to true enabled this module, with false being disabled
+#    Default: true
+#
+#    ExpRateTuner.DisplayMessage.RateOnLogin
+#        If true, will write a message on login showing the character's current
+#        experience rate.
+#    Default: true
+###############################################################################
+
+ExpRateTuner.Enabled = true
+ExpRateTuner.DisplayMessage.RateOnLogin = true
