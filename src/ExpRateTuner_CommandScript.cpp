@@ -17,6 +17,7 @@
 #include "Chat.h"
 #include "Player.h"
 #include "ScriptMgr.h"
+#include "StringConvert.h"
 
 #include "ExpRateTuner.h"
 
@@ -59,15 +60,15 @@ public:
         }
 
         // The rate is a whole percentage between 0 (no experience) and 100 (normal experience)
-        int32 expRate = atoi(args);
-        if (expRate < 0 || expRate > 100)
+        Optional<int32> expRate = Acore::StringTo<int32>(args);
+        if (!expRate || *expRate < 0 || *expRate > 100)
         {
             handler->PSendSysMessage("Experience rate must be a value between 0 and 100.");
             return true;
         }
 
-        ExpRateTuner->SetExpRateForPlayer(player, (uint32)expRate);
-        handler->PSendSysMessage("Experience rate is now set to {}% for this character.", expRate);
+        ExpRateTuner->SetExpRateForPlayer(player, (uint32)*expRate);
+        handler->PSendSysMessage("Experience rate is now set to {}% for this character.", *expRate);
         return true;
     }
 };
